@@ -12,21 +12,15 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        buy = []
-        for ind, el in enumerate(prices):
-            if ind != len(prices) - 1:
-                if el <= prices[ind + 1]:
-                    buy.append(el)
-            else:
-                buy.append(el)
+        min_price = prices[0]
+        max_profit = 0
 
-        sell = max(prices[1:])
-        t = min(buy[:-1])
+        for price in prices[1:]:
+            max_profit = max(max_profit, price - min_price)
+            min_price = min(min_price, price)
 
-        if t == buy[:-1]:
-            return 0
-        return sell - t
+        return max_profit
 
 
 a = Solution()
-print(a.maxProfit([7,6,4,3,1]))
+print(a.maxProfit([7,1,5,3,6,4]))

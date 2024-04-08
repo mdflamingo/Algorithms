@@ -13,17 +13,6 @@ for _ in range(q):
     res = input().split()
     requests.append((int(res[0]), res[1]))
 
-# for request in requests:
-#     k, prefix = request
-#     worker_with_prefix = list(filter(lambda x: re.match(prefix, x), worker))
-#     print(worker_with_prefix)
-#     worker_with_prefix.sort()
-#
-#     if k <= len(worker_with_prefix):
-#         print(worker.index(worker_with_prefix[k - 1]) + 1)
-#     else:
-#         print(-1)
-
 sort_worker = sorted(worker)
 for el in requests:
     el_in_sort = [name for name in sort_worker if name.startswith(el[1])]

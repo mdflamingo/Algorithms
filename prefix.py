@@ -14,5 +14,8 @@ for _ in range(q):
 sort_worker = sorted(worker)
 for el in requests:
     el_in_sort = [name for index, name in enumerate(sort_worker) if name.startswith(el[1])]
-    el_in_worker = [index + 1 for index, name in enumerate(worker) if name == el_in_sort[el[0] - 1]]
-    print(*el_in_worker)
+    if el[0] < len(el_in_sort):
+        el_in_worker = [index + 1 for index, name in enumerate(worker) if name == el_in_sort[el[0] - 1]]
+        print(*el_in_worker)
+    else:
+        print(-1)

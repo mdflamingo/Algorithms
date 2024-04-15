@@ -1,15 +1,28 @@
-alfavit = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
-smeshenie = int(input('Шаг шифровки: '))
-message = input("Сообщение для ДЕшифровки: ").upper()
-itog = ''
-lang = input('Выберите язык RU/EU: ')
+q = int(input())
+nums = list(map(int, input().split()))
 
-for i in message:
-    mesto = alfavit.find(i)
-    new_mesto = mesto + smeshenie
-    if i in alfavit:
-        itog += alfavit[new_mesto]
+start = 0
+
+finish = 6
+
+max_count = 0
+
+mass_current = nums[start:finish + 1]
+
+while True:
+    if 2 not in mass_current and 3 not in mass_current:
+        all_fives = mass_current.count(5)
+        if max_count < all_fives:
+            max_count = all_fives
+    if finish < q - 1:
+        start += 1
+        finish += 1
+
+        mass_current = nums[start:finish + 1]
     else:
-        itog += i
+        break
+if max_count > 0:
+    print(max_count)
+else:
+    print(-1)
 
-print(itog)

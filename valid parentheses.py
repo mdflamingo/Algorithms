@@ -8,7 +8,7 @@ class Solution:
         stack = []
         for c in s:
             if c not in mapping:
-                if not stack or mapping[stack.pop()]!= c:
+                if not stack or mapping[stack.pop()] != c:
                     return False
             else:
                 stack.append(c)
@@ -16,4 +16,4 @@ class Solution:
 
 
 a = Solution()
-print(a.isValid('['))
+print(a.isValid('()[]{}'))
